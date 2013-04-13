@@ -1,6 +1,19 @@
 <html>
 <head><title>Demo LTI Tool</title></head>
 <body>
-launched!
+<p>Hi, <%= @tp.username %>, it looks like rack-lti works!</p>
+<% if @tp.instructor? %>
+  <p>You are a teacher.</p>
+  <p>If you come back as a student you may get to take a test.</p>
+<% elsif @tp.student? %>
+  <p>Learn something!.</p>
+<% elsif @tp.roles && @tp.roles.any? %>
+  <p>Your roles are <%= @tp.roles.join(",") %></p>
+<% else %>
+  <p>You don't have a role so I don't know what to do with you.</p>
+<% end %>
+
+<%= erb :_return_to_lms %>
+
 </body>
 </html>
