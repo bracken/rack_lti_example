@@ -39,7 +39,7 @@ class ExampleTool < Sinatra::Base
     create_tp
 
     if !@tp.outcome_service?
-      return show_error "This tool wasn't lunched as an outcome service"
+      return show_error "This tool wasn't launched as an outcome service."
     end
 
     # post the given score to the TC
@@ -47,7 +47,7 @@ class ExampleTool < Sinatra::Base
 
     if res.success?
       @score = params['score']
-      @tp.lti_msg = "Message shown when arriving back at Tool Consumer."
+      @tp.lti_msg = "Thanks for using the example rack middleware."
       erb :assessment_finished
     else
       @tp.lti_errormsg = "The Tool Consumer failed to add the score."
